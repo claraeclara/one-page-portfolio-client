@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import authService from '../../services/auth.service';
 import fileService from '../../services/file.service';
 
 function CreatePortfolioPage(props) {
@@ -56,8 +57,11 @@ function CreatePortfolioPage(props) {
         descriptionThree,
         imageThree,
       };
-      await axios.post('http://localhost:5005/api/portfolios', requestBody);
-      // Clear the form
+      const authToken = localStorage.getItem('authToken');
+      await axios.post('http://localhost:5005/api/portfolios', requestBody, {
+        headers: { Authorization: `Bearer ${authToken}` },
+      });
+      //Clear the form
       setName('');
       setEmail('');
       setPhone(0);
@@ -73,7 +77,6 @@ function CreatePortfolioPage(props) {
       setDescThree('');
       setImageThree('');
 
-      //refreshProjects(); // Calls the function from the parent component to refresh the list
       navigate('/profile');
     } catch (error) {
       setErrorMessage('Something went wrong');
@@ -83,7 +86,7 @@ function CreatePortfolioPage(props) {
   const handleProjOneImage = async (e) => {
     try {
       const uploadData = new FormData();
-      uploadData.append('imageOne', e.targe.files[0]);
+      uploadData.append('image', e.target.files[0]);
       const response = await fileService.uploadImage(uploadData);
       setImageOne(response.data.secure_url);
       setAllowSubmit(true);
@@ -96,7 +99,7 @@ function CreatePortfolioPage(props) {
   const handleProjTwoImage = async (e) => {
     try {
       const uploadData = new FormData();
-      uploadData.append('imageTwo', e.targe.files[0]);
+      uploadData.append('image', e.target.files[0]);
       const response = await fileService.uploadImage(uploadData);
       setImageTwo(response.data.secure_url);
       setAllowSubmit(true);
@@ -109,7 +112,7 @@ function CreatePortfolioPage(props) {
   const handleProjThreeImage = async (e) => {
     try {
       const uploadData = new FormData();
-      uploadData.append('imageThree', e.targe.files[0]);
+      uploadData.append('image', e.target.files[0]);
       const response = await fileService.uploadImage(uploadData);
       setImageThree(response.data.secure_url);
       setAllowSubmit(true);
@@ -145,6 +148,18 @@ function CreatePortfolioPage(props) {
           value={website}
           onChange={handleWebsite}
         />
+
+        <label>Select a template</label>
+        <select
+          name="template"
+          type="text"
+          value={template}
+          onChange={handleTemplate}
+        >
+          <option value="zigZag">Zig-Zag</option>
+          <option value="inLine">In Line</option>
+          <option value="stripes">Stripes</option>
+        </select>
 
         <h3>Project 1</h3>
         <label>Title:</label>

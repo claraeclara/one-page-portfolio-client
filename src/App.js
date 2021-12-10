@@ -34,19 +34,19 @@ function App() {
           }
         />
 
-        <Route path="/profile/edit/:profileId" element={<EditProfilePage />} />
+        <Route path="/profile/edit/:profileId" element={<IsPrivate><EditProfilePage /></IsPrivate>} />
 
         <Route
           path="/portfolio/:portfolioId"
-          element={<PortfolioDetailsPage />}
+          element={<IsPrivate><PortfolioDetailsPage /></IsPrivate>}
         />
 
         <Route
           path="/edit-portfolio/:portfolioId"
-          element={<EditPortfolioPage />}
+          element={<IsPrivate><EditPortfolioPage /></IsPrivate>}
         />
 
-        <Route path="/portfolio/add" element={<CreatePortfolioPage />} />
+        <Route path="/portfolio/add" element={<IsPrivate><CreatePortfolioPage /></IsPrivate>} />
 
         <Route
           path="/signup"
