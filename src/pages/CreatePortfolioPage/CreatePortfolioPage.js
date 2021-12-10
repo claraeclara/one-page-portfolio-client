@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import authService from '../../services/auth.service';
 import fileService from '../../services/file.service';
@@ -149,13 +149,14 @@ function CreatePortfolioPage(props) {
           onChange={handleWebsite}
         />
 
-        <label>Select a template</label>
+        <label>Template</label>
         <select
           name="template"
           type="text"
           value={template}
           onChange={handleTemplate}
         >
+          <option selected>Choose a Template</option>
           <option value="zigZag">Zig-Zag</option>
           <option value="inLine">In Line</option>
           <option value="stripes">Stripes</option>
@@ -221,9 +222,6 @@ function CreatePortfolioPage(props) {
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      {/* <p>Already have account?</p>
-      <Link to={'/login'}> Login</Link> */}
     </div>
   );
 }
