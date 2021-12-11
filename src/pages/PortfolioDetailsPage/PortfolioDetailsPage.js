@@ -8,6 +8,10 @@ function PortfolioDetailsPage() {
       <Link to="/edit-portfolio/">
         <button>Edit Portfolio</button>
       </Link>
+
+      <Link to="/edit-portfolio/">
+        <button>Edit Portfolio</button>
+      </Link>
     </div>
   );
 }
