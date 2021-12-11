@@ -26,7 +26,7 @@ function App() {
 
         <Route path="/profile" element={<IsPrivate>{' '}<ProfilePage />{' '}</IsPrivate>}/>
 
-        <Route path="/profile/edit/:profileId" element={<IsPrivate><EditProfilePage /></IsPrivate>} />
+        <Route path="/profile/edit/" element={<IsPrivate><EditProfilePage /></IsPrivate>} />
 
         <Route
           path="/portfolio/:portfolioId"
@@ -34,7 +34,7 @@ function App() {
         />
 
         <Route
-          path="/edit-portfolio/:portfolioId"
+          path="/edit-portfolio/"
           element={<IsPrivate><EditPortfolioPage /></IsPrivate>}
         />
 

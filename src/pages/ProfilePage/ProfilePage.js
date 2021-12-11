@@ -13,9 +13,6 @@ function ProfilePage() {
   return (
     <div>
       <h1>Profile Page</h1>
-      <Link to="/portfolio/add">
-        <button>Create Portfolio</button>
-      </Link>
 
       <div className="profile-img-wrapper">
         {user && (
@@ -24,6 +21,11 @@ function ProfilePage() {
           </Link>
         )}
       </div>
+
+      <Link to="/profile/edit/">
+        <button>Edit Portfolio</button>
+      </Link>
+
       <div>
         <h3>Portfolios</h3>
         {user &&
@@ -36,6 +38,9 @@ function ProfilePage() {
               </li>
             );
           })}
+        <Link to="/portfolio/add">
+          <button>Create Portfolio</button>
+        </Link>
       </div>
     </div>
   );
