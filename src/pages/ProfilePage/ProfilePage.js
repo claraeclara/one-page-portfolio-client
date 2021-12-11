@@ -24,33 +24,19 @@ function ProfilePage() {
           </Link>
         )}
       </div>
-
-      {/* <div className="profile-img-wrapper">
-        {user && (
-        user.portfolios.map((portfolio) => {
-          return (
-            <li key={portfolio._id}>
-              <h3>{portfolio.titleOne}</h3>
-              <h4>Description:</h4>
-              <p>{portfolio.descriptionOne}</p>
-            </li>
-          )
-        })
-        )}
-      </div> */}
-
-      {/* <div>
+      <div>
         <h3>Portfolios</h3>
-        {user.portfolios.map((portfolio) => {
-          return (
-            <li key={portfolio._id}>
-              <h3>{portfolio.titleOne}</h3>
-              <h4>Description:</h4>
-              <p>{portfolio.descriptionOne}</p>
-            </li>
-          )
-        })}
-      </div> */}
+        {user &&
+          user.portfolios.map((onePortfolio) => {
+            return (
+              <li key={onePortfolio._id}>
+                <h3>{onePortfolio.titleOne}</h3>
+                <h4>Description:</h4>
+                <p>{onePortfolio.descriptionOne}</p>
+              </li>
+            );
+          })}
+      </div>
     </div>
   );
 }

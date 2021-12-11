@@ -149,18 +149,22 @@ function CreatePortfolioPage(props) {
           onChange={handleWebsite}
         />
 
-        <label>Template</label>
-        <select
-          name="template"
-          type="text"
-          value={template}
-          onChange={handleTemplate}
-        >
-          <option selected>Choose a Template</option>
-          <option value="zigZag">Zig-Zag</option>
-          <option value="inLine">In Line</option>
-          <option value="stripes">Stripes</option>
-        </select>
+
+<div>
+    <label for="templatenput" class="form-label">Choose your template</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="template" value="zigZag" id="flexRadio1"  checked />
+        <label class="form-check-label" for="flexRadioDefault1">Zig-Zag</label>
+        </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="template" value="inLine" id="flexRadio2" />
+        <label class="form-check-label" for="flexRadioDefault2">In Line</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="template" value="stripes" id="flexRadio3" />
+        <label class="form-check-label" for="flexRadioDefault3">Stripes</label>
+    </div>
+    </div>
 
         <h3>Project 1</h3>
         <label>Title:</label>
