@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth.context";
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth.context';
 
 function Navbar() {
   // Get the value from the context
@@ -10,7 +10,12 @@ function Navbar() {
   return (
     <nav className="Navbar">
       <Link to="/">
-        <button>Home</button>
+        <img
+          className="logo-img"
+          src="OnePageLogo.png"
+          alt="onePageLogo"
+          width="50px"
+        />
       </Link>
 
       {isLoggedIn && (
@@ -38,7 +43,6 @@ function Navbar() {
           </Link>
         )}
       </div>
-      
     </nav>
   );
 }

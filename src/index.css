@@ -9,6 +9,14 @@ a {
   color: black;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: #812b14;
+}
+
 button,
 select {
   padding: 5px 10px;
@@ -16,6 +24,8 @@ select {
   margin: 5px;
   font-size: 18px;
   height: 40px;
+  background-color: #323d4a;
+  color: white;
 }
 
 label {
@@ -32,7 +42,7 @@ textarea {
 }
 
 nav {
-  background: #515f7d;
+  background: white;
   color: white;
   padding: 0px 20px;
   box-shadow: 0px 1px 2px gray;
@@ -59,42 +69,40 @@ nav li {
 }
 
 .ProjectCard h3::after {
-  content: url("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png");
+  content: url('https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png');
   margin-left: 5px;
 }
 
-.EditProjectPage,
-.AddProject,
+.EditPortfolioPage,
+.CreatePortfolioPage,
 .AddTask,
 .SignupPage,
 .LoginPage {
-  background: #f9eec3;
-  border: 1px solid grey;
-  box-shadow: 0px 2px 3px grey;
+  background: white;
   width: 400px;
   text-align: center;
   margin: 0 auto;
   margin-bottom: 20px;
   padding: 10px;
   border-radius: 4px;
+  color: #812b14;
 }
 
-.EditProjectPage {
-  background-color: rgb(239, 196, 88);
+.EditPortfolioPage {
+  background-color: #f9eec3;
 }
 
 .SignupPage,
 .LoginPage {
-  background-color: #608dd5;
+  background-color: #f0f0ef;
 }
 
 .LoginPage {
-  background-color: #94a7c8;
+  background-color: #f0f0ef;
 }
 
-.EditProjectPage form,
-.AddTask form,
-.AddProject form,
+.EditPortfolioPage form,
+.CreatePortfolio form,
 .SignupPage form,
 .LoginPage form {
   display: flex;
@@ -103,7 +111,7 @@ nav li {
 }
 
 .AddTask button,
-.AddProject button {
+.CreateProject button {
   display: block;
 }
 
@@ -123,7 +131,5 @@ nav li {
 
 .profile-img {
   width: 35px;
-  border-radius: 35px;
-  border: 2px solid black;
   background-color: rgba(255, 255, 255, 0.3);
 }

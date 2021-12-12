@@ -1,6 +1,12 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import * as React from 'react';
+// import Radio from '@mui/material/Radio';
+// import RadioGroup from '@mui/material/RadioGroup';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import FormControl from '@mui/material/FormControl';
+// import FormLabel from '@mui/material/FormLabel';
 
 import authService from '../../services/auth.service';
 import fileService from '../../services/file.service';
@@ -148,23 +154,79 @@ function CreatePortfolioPage(props) {
           value={website}
           onChange={handleWebsite}
         />
+        {/* <div>
+          <FormControl component="fieldset">
+            <FormLabel component="legend">Choose a Template</FormLabel>
+            <RadioGroup
+              aria-label="template"
+              name="controlled-radio-buttons-group"
+              value={template}
+              onChange={handleTemplate}
+            >
+              <FormControlLabel
+                value="zigZag"
+                control={<Radio />}
+                label="Zig-Zag"
+              />
+              <FormControlLabel
+                value="inLine"
+                control={<Radio />}
+                label="In Line"
+              />
+              <FormControlLabel
+                value="stripes"
+                control={<Radio />}
+                label="Stripes"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div> */}
 
-
-<div>
-    <label for="templatenput" class="form-label">Choose your template</label>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="template" value="zigZag" id="flexRadio1"  checked />
-        <label class="form-check-label" for="flexRadioDefault1">Zig-Zag</label>
+        <div>
+          <label for="templatenput" class="form-label">
+            Choose a template
+          </label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="template"
+              value="zigZag"
+              id="flexRadio1"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Zig-Zag
+            </label>
+            <img src="zigZag.png" alt="zigZag" />
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="template"
+              value="inLine"
+              id="flexRadio2"
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              In Line
+            </label>
+            <img src="inLine.png" alt="inLine" />
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="template"
+              value="stripes"
+              id="flexRadio3"
+            />
+            <label class="form-check-label" for="flexRadioDefault3">
+              Stripes
+            </label>
+            <img src="stripes.png" alt="stripes" />
+          </div>
         </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="template" value="inLine" id="flexRadio2" />
-        <label class="form-check-label" for="flexRadioDefault2">In Line</label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="template" value="stripes" id="flexRadio3" />
-        <label class="form-check-label" for="flexRadioDefault3">Stripes</label>
-    </div>
-    </div>
 
         <h3>Project 1</h3>
         <label>Title:</label>

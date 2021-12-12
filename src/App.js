@@ -12,6 +12,7 @@ import CreatePortfolioPage from './pages/CreatePortfolioPage/CreatePortfolioPage
 import EditPortfolioPage from './pages/EditPortfolioPage/EditPortfolioPage';
 import EditProfilePage from './pages/EditProfilePage/EditProfilePage';
 import PortfolioDetailsPage from './pages/PortfolioDetailsPage/PortfolioDetailsPage';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 import IsPrivate from './components/IsPrivate/IsPrivate';
 import IsAnon from './components/IsAnon/IsAnon';
@@ -24,21 +25,60 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route path="/profile" element={<IsPrivate>{' '}<ProfilePage />{' '}</IsPrivate>}/>
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              {' '}
+              <ProfilePage />{' '}
+            </IsPrivate>
+          }
+        />
 
-        <Route path="/profile/edit/" element={<IsPrivate><EditProfilePage /></IsPrivate>} />
+        <Route
+          path="/profile/edit/"
+          element={
+            <IsPrivate>
+              <EditProfilePage />
+            </IsPrivate>
+          }
+        />
 
         <Route
           path="/portfolio/:portfolioId"
-          element={<IsPrivate><PortfolioDetailsPage /></IsPrivate>}
+          element={
+            <IsPrivate>
+              <PortfolioDetailsPage />
+            </IsPrivate>
+          }
         />
 
         <Route
           path="/edit-portfolio/"
-          element={<IsPrivate><EditPortfolioPage /></IsPrivate>}
+          element={
+            <IsPrivate>
+              <EditPortfolioPage />
+            </IsPrivate>
+          }
         />
 
-        <Route path="/portfolio/add" element={<IsPrivate><CreatePortfolioPage /></IsPrivate>} />
+        <Route
+          path="/portfolio/add"
+          element={
+            <IsPrivate>
+              <CreatePortfolioPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/searchDesign"
+          element={
+            <IsPrivate>
+              <SearchPage />
+            </IsPrivate>
+          }
+        />
 
         <Route
           path="/signup"
