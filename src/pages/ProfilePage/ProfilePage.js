@@ -5,37 +5,70 @@ import { AuthContext } from '../../context/auth.context';
 import axios from 'axios';
 import { useState } from 'react';
 
-function ProfilePage() {
-  const { user } = useContext(AuthContext);
+import Card from 'react-bootstrap/Card'
+import CardGroup from 'react-bootstrap/CardGroup'
+import { ListGroup } from 'react-bootstrap';
+import { ListGroupItem } from 'react-bootstrap';
 
-  console.log('user :>> ', user);
+
+function ProfilePage() {
+  //const { user } = useContext(AuthContext);
+
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem(`authToken`);
+        const response = await axios.get(
+          'http://localhost:5005/api/users/current',
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+
+        const currentUser = response.data;
+        console.log(currentUser);
+        setUser(currentUser);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+    console.log('user :>> ', user);
+  }, []);
 
   return (
-    <div>
-      <h1>Profile Page</h1>
-
-      <div className="profile-img-wrapper">
+    <div className="ProfilePage">
+      <div>
         {user && (
-          <Link to="/profile">
-            <img className="profile-img" src={user.image} alt="profile" />
-          </Link>
+          <>
+            <h2>Hello {user.name}!</h2>
+          </>
         )}
+        <Link to="/profile/edit/">
+          <button>Edit Profile</button>
+        </Link>
       </div>
-
-      <Link to="/profile/edit/">
-        <button>Edit Portfolio</button>
-      </Link>
 
       <div>
         <h3>Portfolios</h3>
-        {user &&
+
+        {user.portfolios &&
           user.portfolios.map((onePortfolio) => {
             return (
-              <li key={onePortfolio._id}>
-                <h3>{onePortfolio.titleOne}</h3>
-                <h4>Description:</h4>
-                <p>{onePortfolio.descriptionOne}</p>
-              </li>
+              <>
+                <Link to='/portfolio/ ${{onePortfolio._id}}'>
+                  <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={onePortfolio.imageOne} />
+                    <ListGroup className="list-group-flush">
+                      <ListGroupItem>{onePortfolio.titleOne}</ListGroupItem>
+                      <ListGroupItem>{onePortfolio.titleTwo}</ListGroupItem>
+                      <ListGroupItem>{onePortfolio.titleThree}</ListGroupItem>
+                    </ListGroup>
+                  </Card>
+                </Link>
+              </>
             );
           })}
         <Link to="/portfolio/add">

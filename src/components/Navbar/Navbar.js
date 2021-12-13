@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 
+import profileImg from '../../images/OnePageLogo.png';
+
 function Navbar() {
   // Get the value from the context
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -12,7 +14,7 @@ function Navbar() {
       <Link to="/">
         <img
           className="logo-img"
-          src="OnePageLogo.png"
+          src={profileImg}
           alt="onePageLogo"
           width="50px"
         />

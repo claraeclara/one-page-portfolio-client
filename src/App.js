@@ -54,7 +54,7 @@ function App() {
         />
 
         <Route
-          path="/edit-portfolio/"
+          path="/edit-portfolio/:portfolioId"
           element={
             <IsPrivate>
               <EditPortfolioPage />

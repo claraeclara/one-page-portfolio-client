@@ -1,6 +1,6 @@
-import axios from "axios";
-import React, { createContext, useState, useEffect } from "react";
-import authService from "../services/auth.service";
+import axios from 'axios';
+import React, { createContext, useState, useEffect } from 'react';
+import authService from '../services/auth.service';
 
 const AuthContext = createContext();
 
@@ -13,13 +13,12 @@ function AuthProviderWrapper({ children }) {
   const verifyStoredToken = async () => {
     try {
       // Get the stored token from the local storage
-      const storedToken = localStorage.getItem("authToken");
+      const storedToken = localStorage.getItem('authToken');
 
       if (storedToken) {
-        const response = await axios.get(
-          "http://localhost:5005/auth/verify",
-          { headers: { Authorization: `Bearer ${storedToken}` } }
-        );
+        const response = await axios.get('http://localhost:5005/auth/verify', {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        });
 
         // or with a service
         // const response = await authService.verify();
@@ -41,12 +40,12 @@ function AuthProviderWrapper({ children }) {
   };
 
   const logInUser = (token) => {
-    localStorage.setItem("authToken", token);
+    localStorage.setItem('authToken', token);
     verifyStoredToken();
   };
 
   const logOutUser = () => {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem('authToken');
 
     // Update state variables
     setIsLoggedIn(false);
@@ -56,7 +55,6 @@ function AuthProviderWrapper({ children }) {
   useEffect(() => {
     verifyStoredToken();
   }, []);
-
 
   return (
     <AuthContext.Provider

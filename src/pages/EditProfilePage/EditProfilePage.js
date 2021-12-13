@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth.context';
 import fileService from '../../services/file.service';
 
 function EditProfilePage(props) {
@@ -9,7 +11,7 @@ function EditProfilePage(props) {
   const [image, setImage] = useState(''); // <-- used for image upload input
   const [allowSubmit, setAllowSubmit] = useState(false);
 
-  const { currenUserId } = useParams();
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,14 +35,20 @@ function EditProfilePage(props) {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      const token = localStorage.getItem(`authToken`);
       const requestBody = { name, image };
-      await axios.put('http://localhost:5005/api/users/current', requestBody);
+
+      await axios.put('http://localhost:5005/api/users/current', requestBody, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       // clear the form
       setName('');
       setImage('');
       navigate('/profile/');
-    } catch (error) {}
+    } catch (error) {
+      setErrorMessage('Failed to handle submit');
+    }
   };
   const handleImage = async (e) => {
     try {
@@ -60,7 +68,7 @@ function EditProfilePage(props) {
       <h1>Edit Profile Page</h1>
 
       <form onSubmit={handleSubmit}>
-        <label>Full Name:</label>
+        <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 
         <label>Image:</label>

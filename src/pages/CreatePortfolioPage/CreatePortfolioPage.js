@@ -1,15 +1,13 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import * as React from 'react';
-// import Radio from '@mui/material/Radio';
-// import RadioGroup from '@mui/material/RadioGroup';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import FormControl from '@mui/material/FormControl';
-// import FormLabel from '@mui/material/FormLabel';
-
-import authService from '../../services/auth.service';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth.context';
 import fileService from '../../services/file.service';
+
+import zigZag from './../../images/zigZag.png';
+import inLine from './../../images/inLine.png';
+import stripes from './../../images/stripes.png';
 
 function CreatePortfolioPage(props) {
   const [name, setName] = useState('');
@@ -29,7 +27,23 @@ function CreatePortfolioPage(props) {
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:5005/api/users/current'
+        );
+        const currentUser = response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleName = (e) => setName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
@@ -46,6 +60,7 @@ function CreatePortfolioPage(props) {
   const handleCreateSubmit = async (e) => {
     try {
       e.preventDefault();
+      const token = localStorage.getItem(`authToken`);
       //CReate an object representing the request body
       const requestBody = {
         name,
@@ -62,27 +77,13 @@ function CreatePortfolioPage(props) {
         titleThree,
         descriptionThree,
         imageThree,
+        userId: user._id,
       };
-      const authToken = localStorage.getItem('authToken');
-      await axios.post('http://localhost:5005/api/portfolios', requestBody, {
-        headers: { Authorization: `Bearer ${authToken}` },
-      });
-      //Clear the form
-      setName('');
-      setEmail('');
-      setPhone(0);
-      setWebsite('');
-      setTemplate('');
-      setTitleOne('');
-      setDescOne('');
-      setImageOne('');
-      setTitleTwo('');
-      setDescTwo('');
-      setImageTwo('');
-      setTitleThree('');
-      setDescThree('');
-      setImageThree('');
 
+      await axios.post('http://localhost:5005/api/portfolios', requestBody, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    
       navigate('/profile');
     } catch (error) {
       setErrorMessage('Something went wrong');
@@ -154,33 +155,6 @@ function CreatePortfolioPage(props) {
           value={website}
           onChange={handleWebsite}
         />
-        {/* <div>
-          <FormControl component="fieldset">
-            <FormLabel component="legend">Choose a Template</FormLabel>
-            <RadioGroup
-              aria-label="template"
-              name="controlled-radio-buttons-group"
-              value={template}
-              onChange={handleTemplate}
-            >
-              <FormControlLabel
-                value="zigZag"
-                control={<Radio />}
-                label="Zig-Zag"
-              />
-              <FormControlLabel
-                value="inLine"
-                control={<Radio />}
-                label="In Line"
-              />
-              <FormControlLabel
-                value="stripes"
-                control={<Radio />}
-                label="Stripes"
-              />
-            </RadioGroup>
-          </FormControl>
-        </div> */}
 
         <div>
           <label for="templatenput" class="form-label">
@@ -193,12 +167,12 @@ function CreatePortfolioPage(props) {
               name="template"
               value="zigZag"
               id="flexRadio1"
-              checked
+              onChange={handleTemplate}
             />
             <label class="form-check-label" for="flexRadioDefault1">
               Zig-Zag
             </label>
-            <img src="zigZag.png" alt="zigZag" />
+            <img src={zigZag} alt="zigZag" height="250px" />
           </div>
           <div class="form-check">
             <input
@@ -207,11 +181,12 @@ function CreatePortfolioPage(props) {
               name="template"
               value="inLine"
               id="flexRadio2"
+              onChange={handleTemplate}
             />
             <label class="form-check-label" for="flexRadioDefault2">
               In Line
             </label>
-            <img src="inLine.png" alt="inLine" />
+            <img src={inLine} alt="inLine" height="250px" />
           </div>
           <div class="form-check">
             <input
@@ -220,11 +195,12 @@ function CreatePortfolioPage(props) {
               name="template"
               value="stripes"
               id="flexRadio3"
+              onChange={handleTemplate}
             />
             <label class="form-check-label" for="flexRadioDefault3">
               Stripes
             </label>
-            <img src="stripes.png" alt="stripes" />
+            <img src={stripes} alt="stripes" height="250px" />
           </div>
         </div>
 
