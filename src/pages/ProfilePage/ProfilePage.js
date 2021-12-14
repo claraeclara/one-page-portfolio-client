@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { useContext, useEffect } from 'react';
-import { AuthContext } from '../../context/auth.context';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -16,8 +15,6 @@ function ProfilePage() {
   //const { user } = useContext(AuthContext);
 
   const [user, setUser] = useState('');
-
-  // console.log('user :>> ', user);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,8 +34,6 @@ function ProfilePage() {
     };
     fetchData();
   }, []);
-
-  console.log('user without port', user); // this user is blank rn
 
   return (
     <>
@@ -84,14 +79,27 @@ function ProfilePage() {
         </div>
       ) : (
         <>
-          <p>
-            {' '}
-            You don't have portfolios.
-            <br></br>What about creating one?
-          </p>
-          <Link to="/portfolio/add">
-            <button>Create Portfolio</button>
-          </Link>
+          <div>
+            <p>
+              {' '}
+              You don't have portfolios.
+              <br></br>What about creating one?
+            </p>
+            <Link to="/portfolio/add">
+              <button>Create Portfolio</button>
+            </Link>
+          </div>
+          <div>
+            <p>
+              {' '}
+              And if you need inspiration,
+              <br></br>get some amazing references!
+            </p>
+
+            <Link to="/searchDesign">
+              <button>Get Inspired</button>
+            </Link>
+          </div>
         </>
       )}
     </>

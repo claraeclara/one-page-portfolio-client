@@ -52,8 +52,7 @@ function PortfolioDetailsPage() {
             </Row>
             <Row>
               <Col>
-                Email:{portfolio.email} Phone:{portfolio.phone} Website:
-                {portfolio.website}
+                Email | {portfolio.email} Phone|{portfolio.phone} Website|{portfolio.website}
               </Col>
               <Col xs={5}></Col>
               <Col></Col>
