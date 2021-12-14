@@ -11,6 +11,8 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 function PortfolioDetailsPage() {
   //const [user, setUser] = useState('');
   const [portfolio, setPortfolio] = useState(null);
@@ -24,7 +26,7 @@ function PortfolioDetailsPage() {
       try {
         const authToken = localStorage.getItem('authToken');
         const response = await axios.get(
-          `http://localhost:5005/api/portfolios/${portfolioId}`,
+          `${SERVER_URL}/api/portfolios/${portfolioId}`,
           {
             headers: { Authorization: `Bearer ${authToken}` },
           }

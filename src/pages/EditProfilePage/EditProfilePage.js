@@ -5,6 +5,8 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import fileService from '../../services/file.service';
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 function EditProfilePage(props) {
   const [name, setName] = useState('');
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -18,7 +20,7 @@ function EditProfilePage(props) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5005/api/users/current'
+          `${SERVER_URL}/api/users/current`
         );
         const currentUser = response.data;
         setName(currentUser.name);
@@ -38,7 +40,7 @@ function EditProfilePage(props) {
       const token = localStorage.getItem(`authToken`);
       const requestBody = { name, image };
 
-      await axios.put('http://localhost:5005/api/users/current', requestBody, {
+      await axios.put(`${SERVER_URL}/api/users/current`, requestBody, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

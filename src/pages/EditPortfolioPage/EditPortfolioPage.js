@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import fileService from '../../services/file.service';
 
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 function EditPortfolioPage(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -28,7 +30,7 @@ function EditPortfolioPage(props) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:5005/api/portfolios/' + portfolioId
+          `${SERVER_URL}/api/portfolios/${portfolioId}`
         );
         const onePortfolio = response.data;
         setName(onePortfolio.title);
@@ -84,7 +86,7 @@ function EditPortfolioPage(props) {
         imageThree,
       };
       await axios.put(
-        'http://localhost:5005/api/portfolios/' + portfolioId,
+        `${SERVER_URL}/api/portfolios/${portfolioId}`,
         requestBody
       );
 

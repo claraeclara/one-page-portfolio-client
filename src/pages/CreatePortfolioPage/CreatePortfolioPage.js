@@ -29,14 +29,14 @@ function CreatePortfolioPage(props) {
 
   const { user } = useContext(AuthContext);
 
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          'http://localhost:5005/api/users/current'
-        );
+        const response = await axios.get(`${SERVER_URL}/api/users/current`);
         const currentUser = response.data;
       } catch (error) {
         console.log(error);
@@ -80,10 +80,10 @@ function CreatePortfolioPage(props) {
         userId: user._id,
       };
 
-      await axios.post('http://localhost:5005/api/portfolios', requestBody, {
+      await axios.post(`${SERVER_URL}/api/portfolios`, requestBody, {
         headers: { Authorization: `Bearer ${token}` },
       });
-    
+
       navigate('/profile');
     } catch (error) {
       setErrorMessage('Something went wrong');
