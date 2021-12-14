@@ -12,112 +12,95 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function PortfolioDetailsPage() {
-  const [user, setUser] = useState('');
+  //const [user, setUser] = useState('');
   const [portfolio, setPortfolio] = useState(null);
+
+  const { user } = useContext(AuthContext);
 
   const { portfolioId } = useParams();
 
-  const getPortfolio = async () => {
-    try {
-      const response = await axios.get(
-        'http://localhost:5005/api/portfolios/' + portfolioId
-      );
-      const onePortfolio = response.data;
-      setPortfolio(onePortfolio);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
+    const getPortfolio = async () => {
       try {
-        const token = localStorage.getItem(`authToken`);
+        const authToken = localStorage.getItem('authToken');
         const response = await axios.get(
-          'http://localhost:5005/api/users/current',
+          `http://localhost:5005/api/portfolios/${portfolioId}`,
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${authToken}` },
           }
         );
-        const currentUser = response.data;
-        setUser(currentUser);
+
+        const onePortfolio = response.data;
+        setPortfolio(onePortfolio);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchData();
+
     getPortfolio();
   }, []);
 
-  return (
+  return portfolio ? (
     <div>
-      <h1>Portfolio Details Page</h1>
-      {user.portfolios &&
+      <div className="zigZag">
+        <Card style={{ width: '21rem' }}>
+          <Container fluid>
+            <Row>
+              <Col>{portfolio.name}</Col>
+            </Row>
+            <Row>
+              <Col>
+                Email:{portfolio.email} Phone:{portfolio.phone} Website:
+                {portfolio.website}
+              </Col>
+              <Col xs={5}></Col>
+              <Col></Col>
+            </Row>
+            <Row>
+              <Col xs={6}>
+                <img src={portfolio.imageOne} width="100px" height="80px"></img>
+              </Col>
+              <Col xs={6}>
+                {portfolio.titleOne}
+                <br></br>
+                {portfolio.descriptionOne}
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6}>
+                {portfolio.titleTwo}
+                <br></br>
+                {portfolio.descriptionTwo}
+              </Col>
+              <Col xs={6}>
+                <img src={portfolio.imageTwo} width="100px" height="80px"></img>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={6}>
+                <img
+                  src={portfolio.imageThree}
+                  width="100px"
+                  height="80px"
+                ></img>
+              </Col>
+              <Col xs={6}>
+                {portfolio.titleThree}
+                <br></br>
+                {portfolio.descriptionThree}
+              </Col>
+            </Row>
+          </Container>
+        </Card>
+      </div>
+      {/* {user.portfolios &&
         user.portfolios.map((onePortfolio) => {
           return (
             <>
-              <div className="zigZag">
-                <Card style={{ width: '21rem' }}>
-                  <Container fluid>
-                    <Row>
-                      <Col>{onePortfolio.name}</Col>
-                    </Row>
-                    <Row>
-                      <Col>
-                        Email:{onePortfolio.email} Phone:{onePortfolio.phone}{' '}
-                        Website:{onePortfolio.website}
-                      </Col>
-                      <Col xs={5}></Col>
-                      <Col></Col>
-                    </Row>
-                    <Row>
-                      <Col xs={6}>
-                        <img
-                          src={onePortfolio.imageOne}
-                          width="100px"
-                          height="80px"
-                        ></img>
-                      </Col>
-                      <Col xs={6}>
-                        {onePortfolio.titleOne}
-                        <br></br>
-                        {onePortfolio.descriptionOne}
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={6}>
-                        {onePortfolio.titleTwo}
-                        <br></br>
-                        {onePortfolio.descriptionTwo}
-                      </Col>
-                      <Col xs={6}>
-                        <img
-                          src={onePortfolio.imageTwo}
-                          width="100px"
-                          height="80px"
-                        ></img>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={6}>
-                        <img
-                          src={onePortfolio.imageThree}
-                          width="100px"
-                          height="80px"
-                        ></img>
-                      </Col>
-                      <Col xs={6}>
-                        {onePortfolio.titleThree}
-                        <br></br>
-                        {onePortfolio.descriptionThree}
-                      </Col>
-                    </Row>
-                  </Container>
-                </Card>
-              </div>
+              
             </>
           );
-        })}
+        })} */}
       <div>
         <button>Download Portfolio</button>
         <Link to="/edit-portfolio/">
@@ -190,6 +173,10 @@ function PortfolioDetailsPage() {
         </Card>
       </div>
     </div>
+  ) : (
+    <>
+      <p> nao tem</p>
+    </>
   );
 }
 

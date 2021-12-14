@@ -28,7 +28,18 @@ select {
   height: 40px;
   background-color: #323d4a;
   color: white;
-  border-radius: 12px;
+  border-radius: 5px;
+  border: 2px solid #f9eec3;
+}
+
+.editProfileBtn {
+  padding: 3px 7px;
+  min-width: 50px;
+  font-size: 10px;
+  height: 25px;
+  background-color: #323d4a;
+  color: white;
+  border-radius: 5px;
   border: 2px solid #f9eec3;
 }
 
@@ -53,7 +64,7 @@ nav {
   width: 100%;
   margin-bottom: 15px;
   padding: 5px;
-  width: 390px;
+  width: 400px;
 }
 
 nav li {

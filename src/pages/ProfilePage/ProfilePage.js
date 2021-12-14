@@ -5,11 +5,10 @@ import { AuthContext } from '../../context/auth.context';
 import axios from 'axios';
 import { useState } from 'react';
 
-import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
+import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
-
 
 function ProfilePage() {
   //const { user } = useContext(AuthContext);
@@ -28,27 +27,26 @@ function ProfilePage() {
         );
 
         const currentUser = response.data;
-        console.log(currentUser);
+
         setUser(currentUser);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-    console.log('user :>> ', user);
   }, []);
 
-  return (
+  return user.portfolios.length !== 0 ? (
     <div className="ProfilePage">
       <div>
         {user && (
           <>
             <h2>Hello {user.name}!</h2>
-          </>
-        )}
-        <Link to="/profile/edit/">
-          <button>Edit Profile</button>
+          <Link to="/profile/edit/">
+          <button className='editProfileBtn'>Edit Profile</button>
         </Link>
+        </>
+        )}
       </div>
 
       <div>
@@ -58,7 +56,7 @@ function ProfilePage() {
           user.portfolios.map((onePortfolio) => {
             return (
               <>
-                <Link to='/portfolio/ ${{onePortfolio._id}}'>
+                <Link to={`/portfolio/${onePortfolio._id}`}>
                   <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={onePortfolio.imageOne} />
                     <ListGroup className="list-group-flush">
@@ -76,7 +74,16 @@ function ProfilePage() {
         </Link>
       </div>
     </div>
-  );
+  ) :
+  (
+  <>
+    <p> You don't have portfolios.
+    <br></br>What about creating one?</p>
+    <Link to="/portfolio/add">
+          <button>Create Portfolio</button>
+        </Link>
+  </>
+  )
 }
 
 export default ProfilePage;
