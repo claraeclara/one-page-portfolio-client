@@ -52,7 +52,8 @@ function PortfolioDetailsPage() {
             </Row>
             <Row>
               <Col>
-                Email | {portfolio.email} Phone|{portfolio.phone} Website|{portfolio.website}
+                Email | {portfolio.email} Phone|{portfolio.phone} Website|
+                {portfolio.website}
               </Col>
               <Col xs={5}></Col>
               <Col></Col>
@@ -94,21 +95,13 @@ function PortfolioDetailsPage() {
           </Container>
         </Card>
       </div>
-      {/* {user.portfolios &&
-        user.portfolios.map((onePortfolio) => {
-          return (
-            <>
-              
-            </>
-          );
-        })} */}
       <div>
         <button>Download Portfolio</button>
-        <Link to="/edit-portfolio/">
+        <Link to={`/edit-portfolio/${portfolioId}`}>
           {/* Update to /:portfolioId */}
           <button>Edit Portfolio</button>
-          <button>Delete Portfolio</button>
         </Link>
+        <button>Delete Portfolio</button>
       </div>
 
       <div className="inLine">

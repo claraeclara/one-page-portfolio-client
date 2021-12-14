@@ -1,7 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import fileService from '../../services/file.service';
+import {AuthContext} from './../../context/auth.context'
+
+import zigZag from './../../images/zigZag.png';
+import inLine from './../../images/inLine.png';
+import stripes from './../../images/stripes.png';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
@@ -22,6 +27,8 @@ function EditPortfolioPage(props) {
   const [imageThree, setImageThree] = useState('');
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
+
+  const {user, setUser} = useContext(AuthContext)
 
   const { portfolioId } = useParams();
   const navigate = useNavigate();
@@ -84,27 +91,14 @@ function EditPortfolioPage(props) {
         titleThree,
         descriptionThree,
         imageThree,
+        userId: user._id,
       };
       await axios.put(
         `${SERVER_URL}/api/portfolios/${portfolioId}`,
         requestBody
       );
 
-      setName('');
-      setEmail('');
-      setPhone(0);
-      setWebsite('');
-      setTemplate('');
-      setTitleOne('');
-      setDescOne('');
-      setImageOne('');
-      setTitleTwo('');
-      setDescTwo('');
-      setImageTwo('');
-      setTitleThree('');
-      setDescThree('');
-      setImageThree('');
-      navigate('/portfolio/' + portfolioId);
+      navigate(`/portfolio/'${portfolioId}`);
     } catch (error) {}
   };
   const handleProjOneImage = async (e) => {
@@ -173,9 +167,9 @@ function EditPortfolioPage(props) {
           onChange={handleWebsite}
         />
 
-        <div>
+<div>
           <label for="templatenput" class="form-label">
-            Choose your template
+            Choose a template
           </label>
           <div class="form-check">
             <input
@@ -184,11 +178,12 @@ function EditPortfolioPage(props) {
               name="template"
               value="zigZag"
               id="flexRadio1"
-              checked
+              onChange={handleTemplate}
             />
             <label class="form-check-label" for="flexRadioDefault1">
               Zig-Zag
             </label>
+            <img src={zigZag} alt="zigZag" height="250px" />
           </div>
           <div class="form-check">
             <input
@@ -197,10 +192,12 @@ function EditPortfolioPage(props) {
               name="template"
               value="inLine"
               id="flexRadio2"
+              onChange={handleTemplate}
             />
             <label class="form-check-label" for="flexRadioDefault2">
               In Line
             </label>
+            <img src={inLine} alt="inLine" height="250px" />
           </div>
           <div class="form-check">
             <input
@@ -209,10 +206,12 @@ function EditPortfolioPage(props) {
               name="template"
               value="stripes"
               id="flexRadio3"
+              onChange={handleTemplate}
             />
             <label class="form-check-label" for="flexRadioDefault3">
               Stripes
             </label>
+            <img src={stripes} alt="stripes" height="250px" />
           </div>
         </div>
 
