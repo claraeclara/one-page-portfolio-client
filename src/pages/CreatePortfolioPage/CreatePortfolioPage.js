@@ -33,17 +33,17 @@ function CreatePortfolioPage(props) {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/api/users/current`);
-        const currentUser = response.data;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`${SERVER_URL}/api/users/current`);
+  //       const currentUser = response.data;
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   const handleName = (e) => setName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
@@ -157,7 +157,7 @@ function CreatePortfolioPage(props) {
         />
 
         <div>
-          <label for="templatenput" class="form-label">
+          <label for="templateInput" class="form-label">
             Choose a template
           </label>
           <div class="form-check">

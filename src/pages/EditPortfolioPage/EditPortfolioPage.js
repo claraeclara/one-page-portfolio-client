@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import fileService from '../../services/file.service';
-import {AuthContext} from './../../context/auth.context'
+import { AuthContext } from './../../context/auth.context';
 
 import zigZag from './../../images/zigZag.png';
 import inLine from './../../images/inLine.png';
@@ -26,7 +26,7 @@ function EditPortfolioPage(props) {
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const { portfolioId } = useParams();
 
@@ -77,6 +77,7 @@ function EditPortfolioPage(props) {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      const token = localStorage.getItem(`authToken`);
       const requestBody = {
         name,
         email,
@@ -96,11 +97,16 @@ function EditPortfolioPage(props) {
       };
       await axios.put(
         `${SERVER_URL}/api/portfolios/${portfolioId}`,
-        requestBody
+        requestBody,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
-      navigate(`/portfolio/'${portfolioId}`);
-    } catch (error) {}
+      navigate(`/portfolio/${portfolioId}`);
+    } catch (error) {
+      setErrorMessage('Something went wrong');
+    }
   };
   const handleProjOneImage = async (e) => {
     try {
@@ -168,8 +174,8 @@ function EditPortfolioPage(props) {
           onChange={handleWebsite}
         />
 
-<div>
-          <label for="templatenput" class="form-label">
+        <div>
+          <label for="templateInput" class="form-label">
             Choose a template
           </label>
           <div class="form-check">

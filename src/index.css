@@ -110,33 +110,23 @@ nav li {
   background-color: white;
 }
 
-.SignupPage,
-.LoginPage {
-  background-color: #f0f0ef;
-}
-
-.LoginPage {
-  background-color: #f0f0ef;
-}
-
-.EditPortfolioPage form,
-.CreatePortfolio form,
 .SignupPage form,
-.LoginPage form,
-.HomePage {
+.LoginPage form {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.AddTask button,
-.CreateProject button {
-  display: block;
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f0f0ef
 }
 
 .TaskCard {
   background-color: #dfeef9;
 }
+
 .Navbar {
   padding: 5px 20px;
   display: flex;
@@ -152,3 +142,15 @@ nav li {
   width: 35px;
   background-color: rgba(255, 255, 255, 0.3);
 }
+
+.portfolioContact {
+  color: black;
+  border-radius: 5px;
+  border: 2px solid #f9eec3;
+  font-size: 14px;
+}
+
+.portfolioJobs {
+  font-size: 12px;
+}
+

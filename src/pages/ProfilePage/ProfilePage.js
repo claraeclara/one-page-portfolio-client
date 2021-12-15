@@ -25,7 +25,6 @@ function ProfilePage() {
         });
 
         const currentUser = response.data;
-        console.log('currentUser', currentUser);
 
         setUser(currentUser);
       } catch (error) {
