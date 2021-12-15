@@ -74,7 +74,7 @@ nav li {
   font-weight: 600;
 }
 
-/* .card {
+.card {
   width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;
@@ -82,7 +82,7 @@ nav li {
   margin-bottom: 20px;
   background: white;
   border-radius: 4px;
-} */
+}
 
 .ProjectCard h3::after {
   content: url('https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png');
