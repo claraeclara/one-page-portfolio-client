@@ -8,8 +8,6 @@ import zigZag from './../../images/zigZag.png';
 import inLine from './../../images/inLine.png';
 import stripes from './../../images/stripes.png';
 
-const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-
 function EditPortfolioPage(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -28,9 +26,12 @@ function EditPortfolioPage(props) {
   const [allowSubmit, setAllowSubmit] = useState(false);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const {user, setUser} = useContext(AuthContext)
+  const {user} = useContext(AuthContext)
 
   const { portfolioId } = useParams();
+
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
   const navigate = useNavigate();
 
   useEffect(() => {
