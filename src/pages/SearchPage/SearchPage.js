@@ -1,6 +1,3 @@
-
-
-
 function SearchPage() {
     return ( 
         <div>

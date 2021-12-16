@@ -66,7 +66,7 @@ function PortfolioDetailsPage() {
         <Card style={{ width: '21rem' }}>
           <Container fluid>
             <div className="portfolioContact">
-              <Row>
+              <Row className="portfolioFullName">
                 <Col>{portfolio.name}</Col>
               </Row>
               <Row>
@@ -134,7 +134,18 @@ function PortfolioDetailsPage() {
         <Link to={`/edit-portfolio/${portfolioId}`}>
           <button>Edit</button>
         </Link>
-        <button onClick={deletePortfolio}>Delete</button>
+
+        <button
+          onClick={(e) => {
+            if (
+              window.confirm('Are you sure you want to delete the Portfolio?')
+            )
+              deletePortfolio(e);
+          }}
+        >
+          Delete
+        </button>
+        {/* <button onClick={deletePortfolio}>Delete</button> */}
       </div>
     </div>
   ) : (
@@ -143,13 +154,13 @@ function PortfolioDetailsPage() {
         <Card style={{ width: '21rem' }}>
           <Container fluid>
             <div className="portfolioContact">
-              <Row>
+              <Row className="portfolioFullName">
                 <Col>{portfolio.name}</Col>
               </Row>
               <Row>
-                <Col>Email | {portfolio.email}</Col>
-                <Col>Phone | {portfolio.phone}</Col>
-                <Col>Website | {portfolio.website}</Col>
+                <Col>| Email | {portfolio.email}</Col>
+                <Col>| Phone | {portfolio.phone}</Col>
+                <Col>| Website | {portfolio.website}</Col>
               </Row>
             </div>
             <div className="portfolioJobs">

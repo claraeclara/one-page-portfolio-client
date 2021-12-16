@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 
-import React, { Component } from 'react';
-
 function HomePage() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 

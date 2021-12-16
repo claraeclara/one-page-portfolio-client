@@ -33,18 +33,6 @@ function CreatePortfolioPage(props) {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`${SERVER_URL}/api/users/current`);
-  //       const currentUser = response.data;
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
   const handleName = (e) => setName(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePhone = (e) => setPhone(e.target.value);
@@ -187,20 +175,6 @@ function CreatePortfolioPage(props) {
               In Line
             </label>
             <img src={inLine} alt="inLine" height="250px" />
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="template"
-              value="stripes"
-              id="flexRadio3"
-              onChange={handleTemplate}
-            />
-            <label class="form-check-label" for="flexRadioDefault3">
-              Stripes
-            </label>
-            <img src={stripes} alt="stripes" height="250px" />
           </div>
         </div>
 
