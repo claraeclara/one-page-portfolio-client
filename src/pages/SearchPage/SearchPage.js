@@ -11,7 +11,7 @@ function SearchPage() {
   const [allArt, setAllArt] = useState(' ');
   const [objectIDs, setOjbjectsIDs] = useState(46);
   const [interval, setInterval] = useState([
-    444, 555, 666, 888, 999, 46, 333, 2321, 900, 1000, 2000, 5000, 6000,
+    555, 666, 888, 999, 46, 333, 2321, 900, 1000, 2000, 5000, 6000, 7000, 130,
   ]);
   const [results, setResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);

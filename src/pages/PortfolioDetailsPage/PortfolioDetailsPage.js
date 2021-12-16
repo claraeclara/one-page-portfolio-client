@@ -70,18 +70,9 @@ function PortfolioDetailsPage() {
                 <Col>{portfolio.name}</Col>
               </Row>
               <Row>
-                <Col xs={10}>
-                  Email | {portfolio.email}
-                </Col>
-                <Col xs={10}>
-                Phone | {portfolio.phone}
-                </Col>
-                <Col xs={10}>
-                Website | {portfolio.website}
-                </Col>
-
-                <Col xs={5}></Col>
-                <Col></Col>
+                <Col>| Email | {portfolio.email}</Col>
+                <Col>| Phone | {portfolio.phone}</Col>
+                <Col>| Website | {portfolio.website}</Col>
               </Row>
             </div>
             <div className="portfolioJobs">
@@ -135,7 +126,7 @@ function PortfolioDetailsPage() {
         </Card>
       </div>
       <div>
-        <button>Download</button>
+        <button onClick="window.print()">Print</button>
         <Link to={`/edit-portfolio/${portfolioId}`}>
           <button>Edit</button>
         </Link>
@@ -222,7 +213,7 @@ function PortfolioDetailsPage() {
         </Card>
       </div>
       <div>
-        <button>Download</button>
+        <button onClick="window.print()">Print</button>
         <Link to={`/edit-portfolio/${portfolioId}`}>
           <button>Edit</button>
         </Link>
