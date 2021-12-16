@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  width: 390px;
+  width: 400px;
 }
 
 a {
@@ -64,7 +64,7 @@ nav {
   width: 100%;
   margin-bottom: 15px;
   padding: 5px;
-  width: 380px;
+  width: 400px;
 }
 
 nav li {
@@ -75,7 +75,7 @@ nav li {
 }
 
 .card {
-  width: 390px;
+  width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
@@ -91,13 +91,12 @@ nav li {
 
 .EditPortfolioPage,
 .CreatePortfolioPage,
-.AddTask,
 .SignupPage,
 .LoginPage,
 .HomePage,
 .ProfilePage {
   background: white;
-  width: 390px;
+  width: 400px;
   text-align: center;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -111,7 +110,8 @@ nav li {
 }
 
 .SignupPage form,
-.LoginPage form {
+.LoginPage form,
+.EditProfilePage form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,6 +148,7 @@ nav li {
   border-radius: 5px;
   border: 2px solid #f9eec3;
   font-size: 8px;
+  margin: 10px;
 }
 
 .portfolioJobs {

@@ -72,14 +72,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/searchDesign"
-          element={
-            <IsPrivate>
-              <SearchPage />
-            </IsPrivate>
-          }
-        />
+        <Route path="/searchDesign" element={<SearchPage />} />
 
         <Route
           path="/signup"

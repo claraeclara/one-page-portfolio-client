@@ -206,20 +206,6 @@ function EditPortfolioPage(props) {
             </label>
             <img src={inLine} alt="inLine" height="250px" />
           </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="template"
-              value="stripes"
-              id="flexRadio3"
-              onChange={handleTemplate}
-            />
-            <label class="form-check-label" for="flexRadioDefault3">
-              Stripes
-            </label>
-            <img src={stripes} alt="stripes" height="250px" />
-          </div>
         </div>
 
         <h3>Project 1</h3>

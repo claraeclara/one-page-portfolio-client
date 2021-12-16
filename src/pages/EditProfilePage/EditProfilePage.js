@@ -19,9 +19,7 @@ function EditProfilePage(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${SERVER_URL}/api/users/current`
-        );
+        const response = await axios.get(`${SERVER_URL}/api/users/current`);
         const currentUser = response.data;
         setName(currentUser.name);
         setImage(currentUser.image);
@@ -66,10 +64,9 @@ function EditProfilePage(props) {
   };
 
   return (
-    <div>
-      <h1>Edit Profile Page</h1>
-
+    <div className="EditProfilePage">
       <form onSubmit={handleSubmit}>
+        <h1>Edit Profile</h1>
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
 

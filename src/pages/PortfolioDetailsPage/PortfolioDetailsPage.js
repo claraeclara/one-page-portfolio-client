@@ -72,9 +72,14 @@ function PortfolioDetailsPage() {
               <Row>
                 <Col xs={10}>
                   Email | {portfolio.email}
-                  <br></br>Phone | {portfolio.phone}
-                  <br></br>Website | {portfolio.website}
                 </Col>
+                <Col xs={10}>
+                Phone | {portfolio.phone}
+                </Col>
+                <Col xs={10}>
+                Website | {portfolio.website}
+                </Col>
+
                 <Col xs={5}></Col>
                 <Col></Col>
               </Row>
