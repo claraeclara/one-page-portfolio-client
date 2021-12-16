@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useState } from 'react';
 
 import Card from 'react-bootstrap/Card';
-import CardGroup from 'react-bootstrap/CardGroup';
 import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 

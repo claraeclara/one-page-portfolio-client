@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
@@ -7,7 +7,6 @@ import fileService from '../../services/file.service';
 
 import zigZag from './../../images/zigZag.png';
 import inLine from './../../images/inLine.png';
-import stripes from './../../images/stripes.png';
 
 function CreatePortfolioPage(props) {
   const [name, setName] = useState('');

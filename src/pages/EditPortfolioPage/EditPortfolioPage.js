@@ -6,7 +6,6 @@ import { AuthContext } from './../../context/auth.context';
 
 import zigZag from './../../images/zigZag.png';
 import inLine from './../../images/inLine.png';
-import stripes from './../../images/stripes.png';
 
 function EditPortfolioPage(props) {
   const [name, setName] = useState('');

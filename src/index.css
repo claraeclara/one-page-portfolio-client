@@ -5,9 +5,24 @@ body {
   width: 400px;
 }
 
-a {
-  list-style: none;
-  color: black;
+a:link {
+  color: coral;
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: coral;
+}
+
+a:hover {
+  text-decoration: none;
+  color: coral;
+}
+
+a:active {
+  text-decoration: none;
+  color: coral;
 }
 
 h1,

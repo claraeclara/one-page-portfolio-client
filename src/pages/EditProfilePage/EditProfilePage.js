@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
 import fileService from '../../services/file.service';

@@ -14,6 +14,7 @@ function SearchPage() {
     444, 555, 666, 888, 999, 46, 333, 2321, 900, 1000, 2000, 5000, 6000,
   ]);
   const [results, setResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,42 +33,43 @@ function SearchPage() {
         //   },
         // });
         setResults(cleanArr);
-        console.log('done fetching');
+        setFilteredResults(cleanArr);
       } catch (error) {
         console.log(error);
       }
     };
+
     fetchData();
-    console.log('ART is here', art);
   }, []);
 
-  useEffect(() => {
-    const searchArt = (char) => {
-      let filteredArt;
-      if (char === ' ') {
-        filteredArt = results;
-      } else {
-        filteredArt = results.filter((oneArt) => {
-          return oneArt.title.toLowerCase().includes(char.toLowerCase());
-        });
-      }
-      setArt(filteredArt);
-    };
+  const searchArt = (char) => {
+    let filteredArt;
+    filteredArt = results.filter((oneArt) => {
+      return oneArt.title.toLowerCase().includes(char.toLowerCase());
+    });
 
-    const handleSearch = (event) => {
-      setArtName(event.target.value);
-      searchArt(event.target.value);
-    };
-    if (results.length) {
-      searchArt();
-    }
-  }, [results]);
+    setFilteredResults(filteredArt);
+  };
+
+  const handleSearch = (event) => {
+    searchArt(event.target.value);
+  };
 
   return (
     <>
       <div>
-        {results.length &&
-          results.map((oneArt) => {
+        <div>
+          <br />
+          <input
+            value={undefined}
+            type="text"
+            onChange={handleSearch}
+            placeholder="Search for inspiration"
+          />
+          <br />
+        </div>
+        {filteredResults.length &&
+          filteredResults.map((oneArt) => {
             return (
               <>
                 <Card style={{ width: '18rem' }}>
@@ -86,10 +88,7 @@ function SearchPage() {
             <ListGroupItem>{art.title}</ListGroupItem>
           </ListGroup>
         </Card>
-        <div>
-          <label>Search for inspiration</label>
-          <input value={undefined} type="text" onChange="" />
-        </div> */}
+         */}
 
         {/* <div>
         <Row style={{ width: '100%', justifyContent: 'center' }}>
