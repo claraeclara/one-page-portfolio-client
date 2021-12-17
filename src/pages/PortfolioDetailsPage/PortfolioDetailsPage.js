@@ -217,7 +217,16 @@ function PortfolioDetailsPage() {
         <Link to={`/edit-portfolio/${portfolioId}`}>
           <button>Edit</button>
         </Link>
-        <button onClick={deletePortfolio}>Delete</button>
+        <button
+          onClick={(e) => {
+            if (
+              window.confirm('Are you sure you want to delete the Portfolio?')
+            )
+              deletePortfolio(e);
+          }}
+        >
+          Delete
+        </button>
       </div>
     </>
   );
