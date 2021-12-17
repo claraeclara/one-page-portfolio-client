@@ -31,8 +31,8 @@ function HomePage() {
       <img src="screen2.jpeg" alt="creative" height="230px" />
 
       <h2>
-        How <span style={{ color: `coral` }}>{word}</span> can you be in one
-        page?
+        How <span style={{ color: `coral` }}>{word}</span> can you be in 
+        <br></br>one page?
       </h2>
 
       <img src="screen.jpeg" alt="creative" height="230px" />
