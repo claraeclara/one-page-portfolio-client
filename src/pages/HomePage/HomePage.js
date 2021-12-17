@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/auth.context';
 function HomePage() {
   const { isLoggedIn } = useContext(AuthContext);
   const [word, setWord] = useState([]);
+  const [count, setCount] = useState(0);
 
   const randomWordGenerator = (words) => {
     let randomWord = words[Math.floor(Math.random() * words.length)];
@@ -24,6 +25,17 @@ function HomePage() {
       'cute',
     ];
     randomWordGenerator(myArray);
+  }, [count]);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 2000);
+
+    // Return a clean up function - runs during the unmounting
+    return () => {
+      clearInterval(id);
+    };
   }, []);
 
   return (
@@ -31,7 +43,7 @@ function HomePage() {
       <img src="screen2.jpeg" alt="creative" height="230px" />
 
       <h2>
-        How <span style={{ color: `coral` }}>{word}</span> can you be in 
+        How <span style={{ color: `coral` }}>{word}</span> can you be in
         <br></br>one page?
       </h2>
 
