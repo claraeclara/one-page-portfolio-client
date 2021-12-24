@@ -18,11 +18,7 @@ import SearchPage from './pages/SearchPage/SearchPage';
 import IsPrivate from './components/IsPrivate/IsPrivate';
 import IsAnon from './components/IsAnon/IsAnon';
 
-
-
 function App() {
-
-
   return (
     <div className="App">
       <Navbar />
@@ -76,7 +72,14 @@ function App() {
           }
         />
 
-        <Route path="/searchDesign" element={<SearchPage />} />
+        <Route
+          path="/searchDesign"
+          element={
+            <IsPrivate>
+              <SearchPage />
+            </IsPrivate>
+          }
+        />
 
         <Route
           path="/signup"
